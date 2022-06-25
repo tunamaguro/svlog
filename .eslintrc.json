@@ -41,7 +41,9 @@
       }
     ],
     // allow import without extension
-    "import/extensions": "off"
+    "import/extensions": "off",
+    // allow named export only one file
+    "import/prefer-default-export": "off"
   },
   "overrides": [
     {
