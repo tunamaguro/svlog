@@ -1,8 +1,7 @@
 services:
   web:
-    build: 
+    build:
       context: ./.docker
       dockerfile: Dockerfile
     volumes:
       - .:/workspace
-    
