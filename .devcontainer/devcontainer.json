@@ -1,0 +1,6 @@
+{
+  "dockerComposeFile": ["../compose.yaml", "docker-compose.yaml"],
+  "service": "web",
+  "workspaceFolder": "/workspace",
+  "extensions": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+}
