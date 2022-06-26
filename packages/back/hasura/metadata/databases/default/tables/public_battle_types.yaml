@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: battle_types
+is_enum: true
