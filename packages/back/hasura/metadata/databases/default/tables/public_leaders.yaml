@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: leaders
+is_enum: true
