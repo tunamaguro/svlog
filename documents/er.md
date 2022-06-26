@@ -6,7 +6,7 @@
 ## 各テーブルに必要な要素
 
 1. バトル結果テーブル
-   <!-- - バトル結果 ID -->
+   - バトル結果 ID
    - 使用者 ID
    - 勝敗
    - 使用者リーダ名
@@ -23,7 +23,12 @@
 ```mermaid
 erDiagram
 
-battle_result {
+battle_results ||..|| leaders:"leadersはleaderのenum"
+battle_results }o..|| formats:"formatsはformatのenum"
+battle_results }o..|| battle_types:"typesはtypeのenum"
+
+battle_results {
+  UUID battle_id
   string user_id
   string result
   string user_leader
@@ -35,4 +40,20 @@ battle_result {
   string type
   date created_at
 }
+
+leaders{
+    string leader_en
+    string leader_ja
+}
+
+formats{
+    string format_en
+    string format_ja
+}
+
+battle_types{
+    string type_en
+    string type_ja
+}
+
 ```
