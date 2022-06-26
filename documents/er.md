@@ -23,21 +23,20 @@
 ```mermaid
 erDiagram
 
-battle_results ||..|| leaders:"leadersはleaderのenum"
+battle_results }|..|| leaders:"leadersはleaderのenum"
 battle_results }o..|| formats:"formatsはformatのenum"
 battle_results }o..|| battle_types:"typesはtypeのenum"
 
 battle_results {
-  UUID battle_id
-  string user_id
-  string result
-  string user_leader
+  UUID result_id
+  boolean is_win
+  enum user_leader
   string user_deck
-  string opponent_leader
+  enum opponent_leader
   string opponent_deck
   int end_turn
-  string format
-  string type
+  enum format
+  enum type
   date created_at
 }
 
