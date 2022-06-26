@@ -1,3 +1,4 @@
+- "!include public_battle_results.yaml"
 - "!include public_battle_types.yaml"
 - "!include public_formats.yaml"
 - "!include public_leaders.yaml"
