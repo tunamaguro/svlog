@@ -10,7 +10,8 @@
     "format": "prettier --write --ignore-path .gitignore .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "vitest"
+    "test": "vitest",
+    "gen:s": "scaffdog generate"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.2.1",
