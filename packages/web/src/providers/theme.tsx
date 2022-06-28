@@ -27,6 +27,14 @@ export const theme = extendTheme({
       portalcraft: '#D2E9F5',
     },
   },
+  styles: {
+    global: {
+      'html, body': {
+        backgroundColor: 'primary.black',
+        color: 'text.white70',
+      },
+    },
+  },
 })
 
 export const ThemeProvider = ({ children }: { children: JSX.Element }) => (
