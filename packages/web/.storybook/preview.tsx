@@ -23,6 +23,7 @@ export const decorators = [withProvider]
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   viewport: MINIMAL_VIEWPORTS,
+  layout: 'fullscreen',
   controls: {
     matchers: {
       color: /(background|color)$/i,
