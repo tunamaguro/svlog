@@ -1,4 +1,5 @@
 import { DecoratorFn } from '@storybook/react'
+import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
 import * as NextImage from 'next/image'
 
 import { Provider } from '../src/providers'
@@ -21,6 +22,7 @@ export const decorators = [withProvider]
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  viewport: MINIMAL_VIEWPORTS,
   controls: {
     matchers: {
       color: /(background|color)$/i,
