@@ -20,7 +20,7 @@ export const SidebarFeature = ({ icon, name, to }: SidebarFeatureProps) => (
         textColor: 'text.white100',
       }}
     >
-      <Flex minW="sm" alignItems="center">
+      <Flex alignItems="center">
         <Icon as={icon} boxSize="24px" />
         <Text ml="4">{name}</Text>
       </Flex>
