@@ -13,7 +13,7 @@ export const SidebarFeature = ({ icon, name, to }: SidebarFeatureProps) => (
       as="a"
       backgroundColor="primary.gray"
       py="4"
-      pl="20"
+      px="20"
       fontSize="2xl"
       _hover={{
         backgroundColor: 'primary.black',
