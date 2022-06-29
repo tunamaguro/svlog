@@ -43,7 +43,14 @@
     // allow import without extension
     "import/extensions": "off",
     // allow named export only one file
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    // WARN:import/no-unresolvedでパスエイリアスをうまく認識してくれないので、ignorePathに指定する
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": ["^@/*"]
+      }
+    ]
   },
   "overrides": [
     {
