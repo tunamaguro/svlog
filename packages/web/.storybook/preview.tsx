@@ -20,9 +20,22 @@ const withProvider: DecoratorFn = (Story) => (
 
 export const decorators = [withProvider]
 
+const customViewports = {
+  desktop: {
+    name: 'Desktop',
+    styles: {
+      width: '1440px',
+      height: '1024px',
+    },
+  },
+}
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
-  viewport: MINIMAL_VIEWPORTS,
+  viewport: {
+    viewports: { ...customViewports, ...MINIMAL_VIEWPORTS },
+    defaultViewport: 'desktop',
+  },
   layout: 'fullscreen',
   controls: {
     matchers: {
