@@ -3,7 +3,8 @@ import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from 'recharts'
 
 import { theme } from '@/providers/theme'
 
-type dataType = { name: 'win' | 'lose'; value: number }
+import { calcRatio } from './calcRatio'
+import type { dataType } from './types'
 
 const getColor = (name: dataType['name']): string => {
   switch (name) {
@@ -42,7 +43,7 @@ export const WinRatio = ({ data }: WinRatioProps) => (
     </ResponsiveContainer>
     <Box pos="absolute" top="45%" left="50%" transform="translate(-50%,-50%)">
       <Box as="span" textColor="text.white100" fontSize="4xl">
-        72.5
+        {calcRatio(data)}
       </Box>
       <Box as="span" fontSize="sm" fontWeight="">
         %
