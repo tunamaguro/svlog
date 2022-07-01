@@ -7,7 +7,7 @@ questions:
   name: 'Please enter feature name'
 ---
 
-# `{{ inputs.name }}/{{ inputs.name }}.ts`
+# `{{ inputs.name }}/index.ts`
 
 ```typescript
 export {}
