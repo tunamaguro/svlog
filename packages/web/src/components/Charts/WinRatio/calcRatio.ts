@@ -1,6 +1,6 @@
-import type { dataType } from './types'
+import type { WinRatioInput } from './types'
 
-export const calcRatio = (data: dataType[]) => {
+export const calcRatio = (data: WinRatioInput[]) => {
   let win = 0
   let lose = 0
   data.forEach((ele) => {

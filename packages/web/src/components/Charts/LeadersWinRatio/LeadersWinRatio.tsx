@@ -12,13 +12,13 @@ import { theme } from '@/providers/theme'
 
 const textColor: string = theme.colors.text.white70
 
-type dataType = { leader: string; value: number }
+export type RatioByLeaderInput = { leader: string; value: number }
 
 const getColor = (name: string): string => theme.colors.leaders[name] ?? ''
 
 const labelFormatter = (value: unknown) => `${value}%`
 
-type LeadersWinRatioProps = { data: dataType[] }
+type LeadersWinRatioProps = { data: RatioByLeaderInput[] }
 export const LeadersWinRatio = ({ data }: LeadersWinRatioProps) => (
   <ResponsiveContainer width="100%" height="100%">
     <BarChart data={data} margin={{ top: 20 }}>

@@ -10,14 +10,14 @@ import {
 
 import type { Leaders } from '@/models/leaders'
 
-export type dataType = {
+export type ResultDetailInput = {
   leader: Leaders
   total: number
   win: number
   ratio: number
 }
 
-type ResultDetailProps = { data: dataType[] }
+type ResultDetailProps = { data: ResultDetailInput[] }
 export const ResultDetail = ({ data }: ResultDetailProps) => (
   <TableContainer>
     <Table variant="simple">

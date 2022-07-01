@@ -4,9 +4,9 @@ import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from 'recharts'
 import { theme } from '@/providers/theme'
 
 import { calcRatio } from './calcRatio'
-import type { dataType } from './types'
+import type { WinRatioInput } from './types'
 
-const getColor = (name: dataType['name']): string => {
+const getColor = (name: WinRatioInput['name']): string => {
   switch (name) {
     case 'win': {
       return theme.colors.secondary.red
@@ -20,7 +20,7 @@ const getColor = (name: dataType['name']): string => {
   }
 }
 
-type WinRatioProps = { data: [dataType, dataType] }
+type WinRatioProps = { data: [WinRatioInput, WinRatioInput] }
 
 export const WinRatio = ({ data }: WinRatioProps) => (
   <Box boxSize="2xs" pos="relative">

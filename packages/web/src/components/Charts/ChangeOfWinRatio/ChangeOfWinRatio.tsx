@@ -11,13 +11,13 @@ import {
 import { Leaders, LeadersArray } from '@/models/leaders'
 import { theme } from '@/providers/theme'
 
-type dataType = { [P in Leaders]?: number } & { date: number }
+export type RatioByDateInput = { [P in Leaders]?: number } & { date: number }
 
 const getColor = (leader: Leaders): string => theme.colors.leaders[leader] ?? ''
 
 const textColor = theme.colors.text.white70
 
-type ChangeOfWinRatioProps = { data: dataType[] }
+type ChangeOfWinRatioProps = { data: RatioByDateInput[] }
 export const ChangeOfWinRatio = ({ data }: ChangeOfWinRatioProps) => (
   <ResponsiveContainer height="100%" width="100%">
     <LineChart data={data}>

@@ -1,1 +1,1 @@
-export type dataType = { name: 'win' | 'lose'; value: number }
+export type WinRatioInput = { name: 'win' | 'lose'; value: number }
