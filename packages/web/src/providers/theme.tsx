@@ -18,7 +18,7 @@ export const theme = extendTheme({
     },
     text: {
       white100: '#EFEFEF',
-      white70: 'rgba(239,239,239,0.7)',
+      white70: '#a7a9be',
     },
     leaders: {
       forestcraft: '#53C18F',
