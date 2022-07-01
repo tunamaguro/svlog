@@ -56,7 +56,7 @@ export const Dashboard = ({
       </Box>
     </ItemCell>
     <ItemCell colSpan={6}>
-      <SectionTitle>対戦相手別勝率</SectionTitle>
+      <SectionTitle>戦績詳細</SectionTitle>
       <ResultDetail data={detail} />
     </ItemCell>
   </Grid>
