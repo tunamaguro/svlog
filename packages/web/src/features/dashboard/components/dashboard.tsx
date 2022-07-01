@@ -2,18 +2,14 @@ import { Box, Grid, Heading, HeadingProps } from '@chakra-ui/react'
 
 import {
   ChangeOfWinRatio,
-  RatioByDateInput,
-} from '@/components/Charts/ChangeOfWinRatio'
-import {
   LeadersWinRatio,
+  RatioByDateInput,
   RatioByLeaderInput,
-} from '@/components/Charts/LeadersWinRatio'
-import {
   ResultDetail,
   ResultDetailInput,
-} from '@/components/Charts/ResultDetail'
-import { WinRatio } from '@/components/Charts/WinRatio'
-import { WinRatioInput } from '@/components/Charts/WinRatio/types'
+  WinRatio,
+  WinRatioInput,
+} from '@/components/Charts'
 
 import { ItemCell } from './ItemCell'
 
