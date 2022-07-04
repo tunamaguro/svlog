@@ -6,6 +6,7 @@ import {
   useRadioGroup,
   Wrap,
 } from '@chakra-ui/react'
+import { FieldValues, useController,UseControllerProps } from 'react-hook-form'
 
 import { LeaderIcon } from '@/components/LeaderIcons'
 import { LeadersArray } from '@/models/leaders'
@@ -23,14 +24,7 @@ const LeaderRadio = forwardRef<BoxProps, 'div'>((props, ref) => {
   return (
     <Box as="label" cursor="pointer">
       <input {...input} hidden />
-      <Box
-        {...checkbox}
-        position="relative"
-        mx="5"
-        rounded="full"
-        w="fit-content"
-        bg={state.isChecked ? 'text.white100' : 'transparent'}
-      >
+      <Box {...checkbox} position="relative" {...rest}>
         <Box
           position="absolute"
           w="full"
@@ -39,7 +33,6 @@ const LeaderRadio = forwardRef<BoxProps, 'div'>((props, ref) => {
           left="0"
           bg={state.isChecked ? 'transparent' : 'blackAlpha.600'}
           borderRadius="full"
-          {...rest}
         />
         {children}
       </Box>
@@ -47,29 +40,35 @@ const LeaderRadio = forwardRef<BoxProps, 'div'>((props, ref) => {
   )
 })
 
-export const LeaderToggle = () => {
-  const { getRootProps, getRadioProps } = useRadioGroup({
-    name: 'leaders',
-    defaultValue: 'forestcraft',
-    onChange: console.log,
-  })
+type RthLeaderToggle = BoxProps & UseControllerProps<FieldValues>
 
-  const group = getRootProps()
+export const LeaderToggle = forwardRef<RthLeaderToggle, 'div'>(
+  ({ control, name, defaultValue, ...props }) => {
+    const { field } = useController({
+      name,
+      control,
+      defaultValue,
+    })
 
-  return (
-    <Wrap {...group}>
-      {LeadersArray.map((leader) => {
-        const radio = getRadioProps({ value: leader })
+    const { getRootProps, getRadioProps } = useRadioGroup({
+      ...field,
+    })
 
-        return (
-          // できれば使いたくないので、解決法を思いついたら修正
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-expect-error
-          <LeaderRadio key={`${leader}-toggle`} {...radio}>
-            <LeaderIcon leader={leader} />
-          </LeaderRadio>
-        )
-      })}
-    </Wrap>
-  )
-}
+    const group = getRootProps()
+
+    return (
+      <Wrap {...group} justify="center" spacing="10">
+        {LeadersArray.map((leader) => {
+          const radio = getRadioProps({ value: leader })
+
+          return (
+            // @ts-expect-error できれば使いたくないので、解決法を思いついたら修正
+            <LeaderRadio key={`${name}-${leader}-toggle`} {...radio}>
+              <LeaderIcon leader={leader} />
+            </LeaderRadio>
+          )
+        })}
+      </Wrap>
+    )
+  },
+)
