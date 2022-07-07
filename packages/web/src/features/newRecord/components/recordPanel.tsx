@@ -1,6 +1,7 @@
 import {
   Button,
   FormControl,
+  FormErrorMessage,
   FormLabel as ChakraFormLabel,
   FormLabelProps,
   forwardRef,
@@ -15,8 +16,8 @@ import {
   SelectProps,
   SimpleGrid,
 } from '@chakra-ui/react'
-import { useForm } from 'react-hook-form'
 
+import { formType, useNewRecordForm } from '../hooks/useNewRecordForm'
 import { LeaderToggle } from './leaderToggle'
 import { TurnToggle } from './toggleTurn'
 
@@ -31,53 +32,84 @@ const FormLabel = (props: FormLabelProps) => (
   <ChakraFormLabel fontSize="xl" textColor="text.white100" {...props} />
 )
 
-export const RecordPanel = () => {
-  const { control } = useForm()
+type Result = formType & { isWin: boolean }
+
+type RecordPanelProps = {
+  onWin?: (values: Result) => void
+  onLose?: (values: Result) => void
+}
+
+export const RecordPanel = ({ onLose, onWin }: RecordPanelProps) => {
+  const {
+    control,
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useNewRecordForm()
 
   return (
     <SimpleGrid columns={6} spacing={6} maxW="3xl" p="6">
       <GridItem colSpan={6}>
-        <FormControl>
+        <FormControl isInvalid={!!errors.userLeader}>
           <FormLabel>自分のリーダーを選択</FormLabel>
           <LeaderToggle control={control} name="userLeader" />
+          <FormErrorMessage>{errors.userLeader?.message}</FormErrorMessage>
         </FormControl>
       </GridItem>
       <GridItem colSpan={6}>
-        <FormControl>
+        <FormControl isInvalid={!!errors.opponentLeader}>
           <FormLabel>相手のリーダーを選択</FormLabel>
           <LeaderToggle control={control} name="opponentLeader" />
+          <FormErrorMessage>{errors.opponentLeader?.message}</FormErrorMessage>
         </FormControl>
       </GridItem>
       <GridItem colSpan={2}>
-        <FormControl textAlign="center">
+        <FormControl textAlign="center" isInvalid={!!errors.isFirst}>
           <FormLabel>先攻・後攻</FormLabel>
-          <TurnToggle name="firstOrSecond" control={control} />
+          <TurnToggle name="isFirst" control={control} />
+          <FormErrorMessage>{errors.isFirst?.message}</FormErrorMessage>
         </FormControl>
       </GridItem>
       <GridItem colSpan={2}>
-        <FormControl>
+        <FormControl isInvalid={!!errors.format}>
           <FormLabel>フォーマット</FormLabel>
-          <FormatSelect />
+          <FormatSelect {...register('format')} />
+          <FormErrorMessage>{errors.format?.message}</FormErrorMessage>
         </FormControl>
       </GridItem>
       <GridItem colSpan={2}>
-        <FormLabel>
+        <FormControl isInvalid={!!errors.endTurn}>
           <FormLabel>経過ターン</FormLabel>
           <NumberInput min={0} max={30}>
-            <NumberInputField />
+            <NumberInputField
+              {...register('endTurn', { valueAsNumber: true })}
+            />
             <NumberInputStepper>
               <NumberIncrementStepper />
               <NumberDecrementStepper />
             </NumberInputStepper>
           </NumberInput>
-        </FormLabel>
+          <FormErrorMessage>{errors.endTurn?.message}</FormErrorMessage>
+        </FormControl>
       </GridItem>
       <GridItem colSpan={6}>
         <HStack justifyContent="center" spacing={10}>
-          <Button colorScheme="blue" size="lg">
+          <Button
+            colorScheme="blue"
+            size="lg"
+            onClick={handleSubmit((values) =>
+              onLose?.({ ...values, isWin: false }),
+            )}
+          >
             敗北
           </Button>
-          <Button colorScheme="red" size="lg">
+          <Button
+            colorScheme="red"
+            size="lg"
+            onClick={handleSubmit((values) =>
+              onWin?.({ ...values, isWin: true }),
+            )}
+          >
             勝利
           </Button>
         </HStack>
