@@ -6,10 +6,12 @@ import {
   useRadioGroup,
   Wrap,
 } from '@chakra-ui/react'
-import { FieldValues, useController,UseControllerProps } from 'react-hook-form'
+import { useController, UseControllerProps } from 'react-hook-form'
 
 import { LeaderIcon } from '@/components/LeaderIcons'
 import { LeadersArray } from '@/models/leaders'
+
+import { formType } from '../hooks/useNewRecordForm'
 
 /**
  * useRadioを使って非活性時に黒いフィルターをかける
@@ -40,7 +42,7 @@ const LeaderRadio = forwardRef<BoxProps, 'div'>((props, ref) => {
   )
 })
 
-type RthLeaderToggle = BoxProps & UseControllerProps<FieldValues>
+type RthLeaderToggle = BoxProps & UseControllerProps<formType>
 
 export const LeaderToggle = forwardRef<RthLeaderToggle, 'div'>(
   ({ control, name, defaultValue, ...props }) => {

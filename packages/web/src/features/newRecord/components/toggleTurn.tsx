@@ -8,7 +8,9 @@ import {
   useRadio,
   useRadioGroup,
 } from '@chakra-ui/react'
-import { FieldValues, useController, UseControllerProps } from 'react-hook-form'
+import { useController, UseControllerProps } from 'react-hook-form'
+
+import { formType } from '../hooks/useNewRecordForm'
 
 export const TurnRadioButton = forwardRef<BoxProps, 'div'>((props, ref) => {
   const { state, getInputProps, getCheckboxProps } = useRadio(props)
@@ -31,7 +33,7 @@ export const TurnRadioButton = forwardRef<BoxProps, 'div'>((props, ref) => {
   )
 })
 
-type RthTurnToggle = ButtonGroupProps & UseControllerProps<FieldValues>
+type RthTurnToggle = ButtonGroupProps & UseControllerProps<formType>
 
 const firstOrSecond = [
   { en: 'first', ja: '先攻' },
@@ -39,7 +41,7 @@ const firstOrSecond = [
 ]
 
 export const TurnToggle = forwardRef<RthTurnToggle, 'div'>(
-  ({ control, name, defaultValue, ...props }, ref) => {
+  ({ control, name, defaultValue, ...props }) => {
     const { field } = useController({
       name,
       control,
@@ -58,7 +60,7 @@ export const TurnToggle = forwardRef<RthTurnToggle, 'div'>(
           const radio = getRadioProps({ value: ele.en })
           return (
             // @ts-expect-error できれば使いたくないので、解決法を思いついたら修正
-            <TurnRadioButton key={`toggle-${ele}`} {...radio}>
+            <TurnRadioButton key={`toggle-${ele.en}`} {...radio}>
               {ele.ja}
             </TurnRadioButton>
           )
