@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: formats
+is_enum: true

@@ -1,0 +1,18 @@
+{
+  "name": "svlog",
+  "version": "0.0.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": "https://github.com/tunamaguro/svlog.git",
+  "author": "tunamaguro <tsu7magu6@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3"
+  },
+  "scripts": {
+    "prepare": "husky install"
+  }
+}
