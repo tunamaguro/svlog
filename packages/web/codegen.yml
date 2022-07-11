@@ -6,3 +6,9 @@ generates:
     plugins:
       - 'typescript'
       - 'typescript-operations'
+      - 'typescript-urql'
+    config:
+      strictScalars: true
+      scalars:
+        timestamptz: string
+        uuid: string
