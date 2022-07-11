@@ -1,0 +1,13 @@
+query getResults {
+  battle_results(order_by: { created_at: desc }) {
+    created_at
+    end_turn
+    format
+    opponent_leader
+    result_id
+    type
+    user_leader
+    is_win
+    __typename
+  }
+}

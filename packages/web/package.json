@@ -11,7 +11,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "vitest",
-    "gen:s": "scaffdog generate"
+    "gen:s": "scaffdog generate",
+    "gen:gql": "graphql-codegen"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.2.1",
@@ -19,6 +20,7 @@
     "@emotion/styled": "^11.9.3",
     "@hookform/resolvers": "^2.9.3",
     "framer-motion": "^6.3.15",
+    "graphql": "^16.5.0",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -29,6 +31,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
+    "@graphql-codegen/cli": "^2.8.0",
+    "@graphql-codegen/typescript": "^2.7.1",
+    "@graphql-codegen/typescript-operations": "^2.5.1",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",
