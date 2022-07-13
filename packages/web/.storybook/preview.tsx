@@ -1,5 +1,6 @@
 import { DecoratorFn } from '@storybook/react'
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { initialize, mswDecorator } from 'msw-storybook-addon'
 import * as NextImage from 'next/image'
 
 import { Provider } from '../src/providers'
@@ -18,7 +19,9 @@ const withProvider: DecoratorFn = (Story) => (
   </Provider>
 )
 
-export const decorators = [withProvider]
+initialize()
+
+export const decorators = [mswDecorator, withProvider]
 
 const customViewports = {
   desktop: {

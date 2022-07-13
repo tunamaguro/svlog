@@ -56,7 +56,7 @@
   },
   "overrides": [
     {
-      "files": ["**/__test__/*", "**/*.test.@(ts|tsx)"],
+      "files": ["**/__test__/*", "**/*.test.@(ts|tsx)", "**/mocks/**/*.ts"],
       "rules": {
         "import/no-extraneous-dependencies": "off"
       }
