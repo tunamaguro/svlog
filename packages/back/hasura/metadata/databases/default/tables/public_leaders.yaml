@@ -2,3 +2,18 @@ table:
   schema: public
   name: leaders
 is_enum: true
+array_relationships:
+  - name: battleResultsByOpponentLeader
+    using:
+      foreign_key_constraint_on:
+        column: opponent_leader
+        table:
+          schema: public
+          name: battle_results
+  - name: battleResultsByUserLeader
+    using:
+      foreign_key_constraint_on:
+        column: user_leader
+        table:
+          schema: public
+          name: battle_results
