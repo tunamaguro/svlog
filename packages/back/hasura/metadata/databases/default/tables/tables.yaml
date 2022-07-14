@@ -2,3 +2,4 @@
 - "!include public_battle_types.yaml"
 - "!include public_formats.yaml"
 - "!include public_leaders.yaml"
+- "!include public_result_aggregation_by_day.yaml"

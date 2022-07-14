@@ -1,0 +1,33 @@
+query AggregateResult {
+  win_aggregate: battle_results_aggregate(where: { is_win: { _eq: true } }) {
+    aggregate {
+      count
+    }
+  }
+  lose_aggregate: battle_results_aggregate(where: { is_win: { _eq: false } }) {
+    aggregate {
+      count
+    }
+  }
+  leaders {
+    leader_en
+    win: battleResultsByUserLeader_aggregate(where: { is_win: { _eq: true } }) {
+      aggregate {
+        count
+      }
+    }
+    lose: battleResultsByUserLeader_aggregate(
+      where: { is_win: { _eq: false } }
+    ) {
+      aggregate {
+        count
+      }
+    }
+  }
+  result_aggregation_by_day {
+    created_at
+    lose
+    win
+    total
+  }
+}

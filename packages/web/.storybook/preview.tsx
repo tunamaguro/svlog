@@ -1,8 +1,11 @@
 import { DecoratorFn } from '@storybook/react'
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { initialize, mswDecorator } from 'msw-storybook-addon'
 import * as NextImage from 'next/image'
 
 import { Provider } from '../src/providers'
+import { MockProvider } from '../src/providers/urql'
+import React from 'react'
 
 // NextImageをstorybookで使用可能に
 const OriginalNextImage = NextImage.default
@@ -13,12 +16,16 @@ Object.defineProperty(NextImage, 'default', {
 })
 
 const withProvider: DecoratorFn = (Story) => (
-  <Provider>
-    <Story />
-  </Provider>
+  <MockProvider>
+    <Provider>
+      <Story />
+    </Provider>
+  </MockProvider>
 )
 
-export const decorators = [withProvider]
+initialize()
+
+export const decorators = [mswDecorator, withProvider]
 
 const customViewports = {
   desktop: {
