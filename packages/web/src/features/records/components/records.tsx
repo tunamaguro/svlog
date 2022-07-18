@@ -14,6 +14,7 @@ import { IoAddOutline } from 'react-icons/io5'
 
 import { useGetResultsQuery } from '@/generated/graphql'
 
+import { Pagination } from './pagination'
 import { RecordRow } from './recordRow'
 
 const Results = () => {
@@ -28,6 +29,7 @@ const Results = () => {
           userLeader={ele.user_leader}
         />
       ))}
+      <Pagination count={1} />
     </VStack>
   )
 }
