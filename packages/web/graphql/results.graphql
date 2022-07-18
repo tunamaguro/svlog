@@ -6,4 +6,9 @@ query getResults {
     is_win
     __typename
   }
+  battle_results_aggregate {
+    aggregate {
+      count
+    }
+  }
 }

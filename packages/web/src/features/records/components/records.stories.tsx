@@ -16,11 +16,6 @@ type Story = ComponentStoryObj<typeof Records>
 
 export const Default: Story = {
   args: {
-    data: [
-      { isWin: true, userLeader: 'forestcraft', opponentLeader: 'swordcraft' },
-      { isWin: false, userLeader: 'havencraft', opponentLeader: 'portalcraft' },
-      { isWin: true, userLeader: 'shadowcraft', opponentLeader: 'bloodcraft' },
-    ],
     onEdit: RowStory.args?.onEdit,
     onNewRecord: action('onNewRecord'),
   },

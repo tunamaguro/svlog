@@ -19,6 +19,7 @@ import { RecordRow } from './recordRow'
 
 const Results = () => {
   const [{ data }] = useGetResultsQuery()
+  const pages = data?.battle_results_aggregate.aggregate?.count ?? 1
   return (
     <VStack my="6" px="6" py="12" bg="primary.gray" divider={<StackDivider />}>
       {data?.battle_results.map((ele) => (
@@ -29,7 +30,7 @@ const Results = () => {
           userLeader={ele.user_leader}
         />
       ))}
-      <Pagination count={1} />
+      <Pagination count={Math.ceil(pages / 30)} />
     </VStack>
   )
 }
